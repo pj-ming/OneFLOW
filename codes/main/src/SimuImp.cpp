@@ -19,6 +19,8 @@ License
     along with OneFLOW.  If not, see <http://www.gnu.org/licenses/>.
 
 \*---------------------------------------------------------------------------*/
+
+/*prepare for incompressible solver*/
 #include "SimuImp.h"
 #include "SimuDef.h"
 #include "SimuCtrl.h"
@@ -83,10 +85,10 @@ void SimuImp::PostProcess()
 
 void SimuImp::RunSimu()
 {
-    //ÉèÖÃoneflowĞèÒªÖ´ĞĞµÄ²Ù×÷ÀàĞÍ
+    //è®¾ç½®oneflowéœ€è¦æ‰§è¡Œçš„æ“ä½œç±»å‹
     simu_state.Init();
 
-    //¸ù¾İÈÎÎñÀàĞÍµ÷ÓÃ²»Í¬µÄÇó½âÄ£¿é
+    //æ ¹æ®ä»»åŠ¡ç±»å‹è°ƒç”¨ä¸åŒçš„æ±‚è§£æ¨¡å—
     const TaskEnum task = simu_state.Task();
 
     if ( task != TaskEnum::FUN_TEST )
@@ -94,7 +96,7 @@ void SimuImp::RunSimu()
         ConstructSystemMap();
     }
 
-    //¸ù¾İ²»Í¬µÄsimutaskÖµ£¬Ö´ĞĞ²»Í¬µÄÇó½âÁ÷³Ì
+    //æ ¹æ®ä¸åŒçš„simutaskå€¼ï¼Œæ‰§è¡Œä¸åŒçš„æ±‚è§£æµç¨‹
     switch ( task )
     {
         case TaskEnum::SOLVE_FIELD:
